@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "204170968821",
+    "project_id": "libras-quiz",
+    "storage_bucket": "libras-quiz.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:204170968821:android:9785a2428edeea68484fbc",
+        "android_client_info": {
+          "package_name": "com.gamalabs.libras_quiz.libras_quiz"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "204170968821-vmpgs295fi164u78470fubpdad7tk4d5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC9Q2QIU58X0O8kalhRULYEGQDVHEi5-64"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "204170968821-4t57jv346pgb355krh1a91j1labsto4d.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "204170968821-hlg85rgortdnbqn8pisqtrak72gttcqv.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.gamalabs.librasquiz.librasQuiz"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
