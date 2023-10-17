@@ -76,9 +76,8 @@ class HomeView extends StatelessWidget {
                       ),
                       overflow: TextOverflow.ellipsis,
                     ),
-                  ))
-                      .toList(),
-                  value: viewModel.selectedValue,
+                  )).toList(),
+                  value: viewModel.selectedTips,
                   onChanged: (String? value) {
                     viewModel.setValue(value ??"");
                   },
@@ -175,9 +174,9 @@ class HomeView extends StatelessWidget {
                     ),
                   ))
                       .toList(),
-                  value: viewModel.selectedValue2,
+                  value: viewModel.selectedNivels,
                   onChanged: (String? value) {
-                    viewModel.setValue2(value ??"");
+                    viewModel.setValueNivel(value ??"");
                   },
                   buttonStyleData: ButtonStyleData(
                     height: 50,
@@ -232,25 +231,15 @@ class HomeView extends StatelessWidget {
     return Observer(builder: (context) {
       return Container(
           height: 50,
-          decoration: const BoxDecoration(
+          decoration: BoxDecoration(
               color: Colors.white,
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(40.0),
-                topRight: Radius.circular(40.0),
-                bottomRight: Radius.circular(40.0),
-                bottomLeft: Radius.circular(40.0),
-              )),
+              borderRadius: BorderRadius.circular(50.00)),
           child: Row(children: [
             SizedBox(width: 30,),
             Container(
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 color: Colors.white,
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(20000.0),
-                  topRight: Radius.circular(20000.0),
-                  bottomRight: Radius.circular(20000.0),
-                  bottomLeft: Radius.circular(20000.0),
-                )),
+                borderRadius: BorderRadius.circular(50.00)),
               child: Image.asset(ImageConstants.instance.logo),),
             SizedBox(width: 15,),
             Text("Seja bem vindo, ${viewModel.user}", style: TextStyle(

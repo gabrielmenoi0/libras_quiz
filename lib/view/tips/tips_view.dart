@@ -1,20 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:libras_quiz/utils/app_colors.dart';
-import 'package:libras_quiz/utils/image_constants.dart';
+import 'package:gif/gif.dart';
 import 'package:libras_quiz/view/base_view/base_view.dart';
+import 'package:libras_quiz/view/tips/model/tips_model.dart';
 import 'package:libras_quiz/view/tips/viewmodel/tips_view_model.dart';
 
-class TipsView extends StatelessWidget {
+class TipsView extends StatefulWidget {
   final String type;
 
   const TipsView({super.key, required this.type});
+
+  @override
+  State<TipsView> createState() => _TipsViewState();
+}
+
+class _TipsViewState extends State<TipsView> with TickerProviderStateMixin {
+  late GifController _controller;
+
+  @override
+  void initState() {
+    _controller = GifController(vsync: this);
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     return BaseView<TipsViewModel>(
       viewModel: TipsViewModel(),
       onModelReady: (model) {
+        model.type = widget.type;
         model.setContext(context);
         model.init();
       },
@@ -24,59 +38,38 @@ class TipsView extends StatelessWidget {
 
   Widget buildScaffoldBody(BuildContext context, TipsViewModel viewModel) {
     return Scaffold(
-      appBar: AppBar(backgroundColor: AppColors.primaryColor,),
-      backgroundColor: AppColors.primaryColor,
-      body: SingleChildScrollView(
-        padding: EdgeInsets.symmetric(horizontal: 10),
-        child: Column(
-          children: [
-            showType(),
-            GridView.builder(
-              gridDelegate:
-              SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2, mainAxisExtent: 20),
-              itemBuilder: (context, index) {
-                return Text(
-                  '${index + 1}º  -  ',
-                );
-              },
-              itemCount: 2,
-            )
-          ],
-        ),
-      ),
+        appBar: AppBar(title: Observer(builder: (context) => Text(widget.type,style: TextStyle(color: Colors.white),)),),
+        body: Observer(builder: (context) => GridView.builder(
+          shrinkWrap: true,
+          itemCount: viewModel.listTipsView.length,
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2,crossAxisSpacing: 10),
+          itemBuilder: (context, index) {
+            final TipsModel item = viewModel.listTipsView[index];
+            return itemGiphy(viewModel,item);
+          },),)
     );
   }
 
-  Widget showType() {
-    return Container(
-        height: 50,
-        decoration: const BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(40.0),
-              topRight: Radius.circular(40.0),
-              bottomRight: Radius.circular(40.0),
-              bottomLeft: Radius.circular(40.0),
-            )),
-        child: Row(children: [
-          SizedBox(width: 30,),
-          Container(
-            decoration: const BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(20000.0),
-                  topRight: Radius.circular(20000.0),
-                  bottomRight: Radius.circular(20000.0),
-                  bottomLeft: Radius.circular(20000.0),
-                )),
-            child: Image.asset(ImageConstants.instance.logo),),
-          SizedBox(width: 70,),
-          Text(type, style: TextStyle(
-            fontSize: 22,
-            fontWeight: FontWeight.bold,
-            color: AppColors.primaryColor,
-          ),)
-        ],));
+  Widget itemGiphy(TipsViewModel viewModel, TipsModel item) {
+    return InkWell(
+      onTap: ()=> viewModel.viewGiphy(title: item.id ??"" ,giphy: item.value ??""),
+      child: Column(
+        children: [
+          Gif(
+            image: AssetImage("assets/images/giphy.gif"),
+            controller: _controller, // if duration and fps is null, original gif fps will be used.
+            //fps: 30,
+            duration: const Duration(seconds: 2),
+            autostart: Autostart.loop,
+            placeholder: (context) => const Text('Loading...'),
+            onFetchCompleted: () {
+              _controller.reset();
+              // _controller.repeat(max: 10000);
+              _controller.forward();
+            },
+          ),
+          Text(item.id ??"")
+      ],)
+    );
   }
 }

@@ -25,10 +25,114 @@ mixin _$TipsViewModel on _TipsViewModelBase, Store {
     });
   }
 
+  late final _$typeAtom =
+      Atom(name: '_TipsViewModelBase.type', context: context);
+
+  @override
+  String get type {
+    _$typeAtom.reportRead();
+    return super.type;
+  }
+
+  @override
+  set type(String value) {
+    _$typeAtom.reportWrite(value, super.type, () {
+      super.type = value;
+    });
+  }
+
+  late final _$listTipsLettersAtom =
+      Atom(name: '_TipsViewModelBase.listTipsLetters', context: context);
+
+  @override
+  List<TipsModel> get listTipsLetters {
+    _$listTipsLettersAtom.reportRead();
+    return super.listTipsLetters;
+  }
+
+  @override
+  set listTipsLetters(List<TipsModel> value) {
+    _$listTipsLettersAtom.reportWrite(value, super.listTipsLetters, () {
+      super.listTipsLetters = value;
+    });
+  }
+
+  late final _$listTipsViewAtom =
+      Atom(name: '_TipsViewModelBase.listTipsView', context: context);
+
+  @override
+  List<TipsModel> get listTipsView {
+    _$listTipsViewAtom.reportRead();
+    return super.listTipsView;
+  }
+
+  @override
+  set listTipsView(List<TipsModel> value) {
+    _$listTipsViewAtom.reportWrite(value, super.listTipsView, () {
+      super.listTipsView = value;
+    });
+  }
+
+  late final _$listTipsNumbersAtom =
+      Atom(name: '_TipsViewModelBase.listTipsNumbers', context: context);
+
+  @override
+  List<TipsModel> get listTipsNumbers {
+    _$listTipsNumbersAtom.reportRead();
+    return super.listTipsNumbers;
+  }
+
+  @override
+  set listTipsNumbers(List<TipsModel> value) {
+    _$listTipsNumbersAtom.reportWrite(value, super.listTipsNumbers, () {
+      super.listTipsNumbers = value;
+    });
+  }
+
+  late final _$_TipsViewModelBaseActionController =
+      ActionController(name: '_TipsViewModelBase', context: context);
+
+  @override
+  void setTipsLetters() {
+    final _$actionInfo = _$_TipsViewModelBaseActionController.startAction(
+        name: '_TipsViewModelBase.setTipsLetters');
+    try {
+      return super.setTipsLetters();
+    } finally {
+      _$_TipsViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setTipsNumbers() {
+    final _$actionInfo = _$_TipsViewModelBaseActionController.startAction(
+        name: '_TipsViewModelBase.setTipsNumbers');
+    try {
+      return super.setTipsNumbers();
+    } finally {
+      _$_TipsViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  dynamic viewGiphy({required String title, required String giphy}) {
+    final _$actionInfo = _$_TipsViewModelBaseActionController.startAction(
+        name: '_TipsViewModelBase.viewGiphy');
+    try {
+      return super.viewGiphy(title: title, giphy: giphy);
+    } finally {
+      _$_TipsViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
   @override
   String toString() {
     return '''
-isFirstInit: ${isFirstInit}
+isFirstInit: ${isFirstInit},
+type: ${type},
+listTipsLetters: ${listTipsLetters},
+listTipsView: ${listTipsView},
+listTipsNumbers: ${listTipsNumbers}
     ''';
   }
 }

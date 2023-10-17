@@ -91,36 +91,52 @@ mixin _$HomeViewModel on _HomeViewModelBase, Store {
     });
   }
 
-  late final _$selectedValueAtom =
-      Atom(name: '_HomeViewModelBase.selectedValue', context: context);
+  late final _$selectedTipsAtom =
+      Atom(name: '_HomeViewModelBase.selectedTips', context: context);
 
   @override
-  String? get selectedValue {
-    _$selectedValueAtom.reportRead();
-    return super.selectedValue;
+  String? get selectedTips {
+    _$selectedTipsAtom.reportRead();
+    return super.selectedTips;
   }
 
   @override
-  set selectedValue(String? value) {
-    _$selectedValueAtom.reportWrite(value, super.selectedValue, () {
-      super.selectedValue = value;
+  set selectedTips(String? value) {
+    _$selectedTipsAtom.reportWrite(value, super.selectedTips, () {
+      super.selectedTips = value;
     });
   }
 
-  late final _$selectedValue2Atom =
-      Atom(name: '_HomeViewModelBase.selectedValue2', context: context);
+  late final _$selectedNivelsAtom =
+      Atom(name: '_HomeViewModelBase.selectedNivels', context: context);
 
   @override
-  String? get selectedValue2 {
-    _$selectedValue2Atom.reportRead();
-    return super.selectedValue2;
+  String? get selectedNivels {
+    _$selectedNivelsAtom.reportRead();
+    return super.selectedNivels;
   }
 
   @override
-  set selectedValue2(String? value) {
-    _$selectedValue2Atom.reportWrite(value, super.selectedValue2, () {
-      super.selectedValue2 = value;
+  set selectedNivels(String? value) {
+    _$selectedNivelsAtom.reportWrite(value, super.selectedNivels, () {
+      super.selectedNivels = value;
     });
+  }
+
+  late final _$expandedTipsAsyncAction =
+      AsyncAction('_HomeViewModelBase.expandedTips', context: context);
+
+  @override
+  Future expandedTips() {
+    return _$expandedTipsAsyncAction.run(() => super.expandedTips());
+  }
+
+  late final _$expandedLevelsAsyncAction =
+      AsyncAction('_HomeViewModelBase.expandedLevels', context: context);
+
+  @override
+  Future expandedLevels() {
+    return _$expandedLevelsAsyncAction.run(() => super.expandedLevels());
   }
 
   late final _$getUserAsyncAction =
@@ -139,28 +155,12 @@ mixin _$HomeViewModel on _HomeViewModelBase, Store {
     return _$setValueAsyncAction.run(() => super.setValue(value));
   }
 
-  late final _$setValue2AsyncAction =
-      AsyncAction('_HomeViewModelBase.setValue2', context: context);
+  late final _$setValueNivelAsyncAction =
+      AsyncAction('_HomeViewModelBase.setValueNivel', context: context);
 
   @override
-  Future<void> setValue2(String value) {
-    return _$setValue2AsyncAction.run(() => super.setValue2(value));
-  }
-
-  late final _$expandedDicasAsyncAction =
-      AsyncAction('_HomeViewModelBase.expandedDicas', context: context);
-
-  @override
-  Future expandedDicas() {
-    return _$expandedDicasAsyncAction.run(() => super.expandedDicas());
-  }
-
-  late final _$expandedNiveisAsyncAction =
-      AsyncAction('_HomeViewModelBase.expandedNiveis', context: context);
-
-  @override
-  Future expandedNiveis() {
-    return _$expandedNiveisAsyncAction.run(() => super.expandedNiveis());
+  Future<void> setValueNivel(String value) {
+    return _$setValueNivelAsyncAction.run(() => super.setValueNivel(value));
   }
 
   @override
@@ -171,8 +171,8 @@ expandedInstallmentDicas: ${expandedInstallmentDicas},
 expandedInstallmentNiveis: ${expandedInstallmentNiveis},
 items: ${items},
 items2: ${items2},
-selectedValue: ${selectedValue},
-selectedValue2: ${selectedValue2}
+selectedTips: ${selectedTips},
+selectedNivels: ${selectedNivels}
     ''';
   }
 }
