@@ -27,7 +27,7 @@ class _GiphyViewState extends State<GiphyView> with TickerProviderStateMixin {
           title: Text(
         widget.title,
         style: TextStyle(color: Colors.white),
-      )),
+      ),centerTitle: true),
       body: Center(
         child: Gif(
           image: AssetImage("assets/images/giphy.gif"),

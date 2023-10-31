@@ -47,4 +47,4 @@ class LocaleManager {
   }
 }
 
-enum PreferencesKeys { TOKEN, IS_FIRST_APP, LOGIN }
+enum PreferencesKeys { TOKEN, IS_FIRST_APP, LEVEL2, LEVEL3 }

@@ -38,7 +38,7 @@ class _TipsViewState extends State<TipsView> with TickerProviderStateMixin {
 
   Widget buildScaffoldBody(BuildContext context, TipsViewModel viewModel) {
     return Scaffold(
-        appBar: AppBar(title: Observer(builder: (context) => Text(widget.type,style: TextStyle(color: Colors.white),)),),
+        appBar: AppBar(title: Text(widget.type,style: TextStyle(color: Colors.white),),centerTitle: true),
         body: Observer(builder: (context) => GridView.builder(
           shrinkWrap: true,
           itemCount: viewModel.listTipsView.length,

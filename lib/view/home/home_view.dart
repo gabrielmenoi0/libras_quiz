@@ -64,7 +64,7 @@ class HomeView extends StatelessWidget {
                       ),
                     ],
                   ),
-                  items: viewModel.items
+                  items: viewModel.itemsTips
                       .map((String item) => DropdownMenuItem<String>(
                     value: item,
                     child: Text(
@@ -134,7 +134,7 @@ class HomeView extends StatelessWidget {
                   hint: const Row(
                     children: [
                       Icon(
-                        Icons.lock,
+                        Icons.lock_open_outlined,
                         size: 16,
                         color: AppColors.primaryColor,
                       ),
@@ -154,7 +154,7 @@ class HomeView extends StatelessWidget {
                       ),
                     ],
                   ),
-                  items: viewModel.items2
+                  items: viewModel.itemsLevel
                       .map((String item) => DropdownMenuItem<String>(
                     value: item,
                     child: Row(
@@ -169,14 +169,14 @@ class HomeView extends StatelessWidget {
                           ),
                           overflow: TextOverflow.ellipsis,
                         ),
-                        Icon(Icons.lock,color: AppColors.primaryColor,)
+                        Icon(item =="Iniciante"  || item =="Intermediário" && viewModel.level2 || item=="Avançado" && viewModel.level3 ? Icons.lock_open_rounded: Icons.lock,color: AppColors.primaryColor,)
                       ],
                     ),
                   ))
                       .toList(),
                   value: viewModel.selectedNivels,
                   onChanged: (String? value) {
-                    viewModel.setValueNivel(value ??"");
+                    viewModel.setValueLevel(value ??"");
                   },
                   buttonStyleData: ButtonStyleData(
                     height: 50,

@@ -38,11 +38,9 @@ abstract class _SplashViewModelBase extends BaseViewModel with Store {
 
   Future<void> _authorizationValidate() async {
     await Future.delayed(Duration(milliseconds: 2500));
-    // if (localeManager.getStringValue(PreferencesKeys.TOKEN).isEmpty) {
-    //   _navigateToLogin();
-    // } else {
-    _navigateToHome();
-    // }
+    localeManager.getStringValue(PreferencesKeys.TOKEN).isEmpty ?
+    _navigateToLogin() : _navigateToHome();
+
   }
 
   @action

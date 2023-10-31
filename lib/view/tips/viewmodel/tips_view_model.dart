@@ -25,6 +25,7 @@ abstract class _TipsViewModelBase extends BaseViewModel with Store {
     });
   }
 
+  String filePath = "assets/images/";
   @observable
   bool isFirstInit = true;
 
@@ -43,42 +44,45 @@ abstract class _TipsViewModelBase extends BaseViewModel with Store {
   @action
   void setTipsLetters(){
     listTipsLetters = [
-      TipsModel(id: "A",value: "assets/images/giphy.gif"),
-      TipsModel(id: "B",value: "assets/images/giphy.gif"),
-      TipsModel(id: "C",value: "assets/images/giphy.gif"),
-      TipsModel(id: "D",value: "assets/images/giphy.gif"),
-      TipsModel(id: "E",value: "assets/images/giphy.gif"),
-      TipsModel(id: "F",value: "assets/images/giphy.gif"),
-      TipsModel(id: "G",value: "assets/images/giphy.gif"),
-      TipsModel(id: "I",value: "assets/images/giphy.gif"),
-      TipsModel(id: "J",value: "assets/images/giphy.gif"),
-      TipsModel(id: "K",value: "assets/images/giphy.gif"),
-      TipsModel(id: "L",value: "assets/images/giphy.gif"),
-      TipsModel(id: "M",value: "assets/images/giphy.gif"),
-      TipsModel(id: "N",value: "assets/images/giphy.gif"),
-      TipsModel(id: "O",value: "assets/images/giphy.gif"),
-      TipsModel(id: "P",value: "assets/images/giphy.gif"),
-      TipsModel(id: "Q",value: "assets/images/giphy.gif"),
-      TipsModel(id: "W",value: "assets/images/giphy.gif"),
-      TipsModel(id: "X",value: "assets/images/giphy.gif"),
-      TipsModel(id: "Y",value: "assets/images/giphy.gif"),
-      TipsModel(id: "Z",value: "assets/images/giphy.gif"),
+      TipsModel(id: "A",value: "${filePath}giphy.gif"),
+      TipsModel(id: "B",value: "${filePath}giphy.gif"),
+      TipsModel(id: "C",value: "${filePath}giphy.gif"),
+      TipsModel(id: "D",value: "${filePath}giphy.gif"),
+      TipsModel(id: "E",value: "${filePath}giphy.gif"),
+      TipsModel(id: "F",value: "${filePath}giphy.gif"),
+      TipsModel(id: "G",value: "${filePath}giphy.gif"),
+      TipsModel(id: "H",value: "${filePath}giphy.gif"),
+      TipsModel(id: "I",value: "${filePath}giphy.gif"),
+      TipsModel(id: "J",value: "${filePath}giphy.gif"),
+      TipsModel(id: "K",value: "${filePath}giphy.gif"),
+      TipsModel(id: "L",value: "${filePath}giphy.gif"),
+      TipsModel(id: "M",value: "${filePath}giphy.gif"),
+      TipsModel(id: "N",value: "${filePath}giphy.gif"),
+      TipsModel(id: "O",value: "${filePath}giphy.gif"),
+      TipsModel(id: "P",value: "${filePath}giphy.gif"),
+      TipsModel(id: "Q",value: "${filePath}giphy.gif"),
+      TipsModel(id: "W",value: "${filePath}giphy.gif"),
+      TipsModel(id: "X",value: "${filePath}giphy.gif"),
+      TipsModel(id: "Y",value: "${filePath}giphy.gif"),
+      TipsModel(id: "Z",value: "${filePath}giphy.gif"),
+
     ];
   }
 
   @action
   void setTipsNumbers(){
     listTipsNumbers = [
-      TipsModel(id: "0",value: "assets/images/giphy.gif"),
-      TipsModel(id: "1",value: "assets/images/giphy.gif"),
-      TipsModel(id: "2",value: "assets/images/giphy.gif"),
-      TipsModel(id: "3",value: "assets/images/giphy.gif"),
-      TipsModel(id: "4",value: "assets/images/giphy.gif"),
-      TipsModel(id: "5",value: "assets/images/giphy.gif"),
-      TipsModel(id: "6",value: "assets/images/giphy.gif"),
-      TipsModel(id: "7",value: "assets/images/giphy.gif"),
-      TipsModel(id: "8",value: "assets/images/giphy.gif"),
-      TipsModel(id: "9",value: "assets/images/giphy.gif"),
+      TipsModel(id: "0",value: "${filePath}giphy.gif"),
+      TipsModel(id: "1",value: "${filePath}giphy.gif"),
+      TipsModel(id: "2",value: "${filePath}giphy.gif"),
+      TipsModel(id: "3",value: "${filePath}giphy.gif"),
+      TipsModel(id: "4",value: "${filePath}giphy.gif"),
+      TipsModel(id: "5",value: "${filePath}giphy.gif"),
+      TipsModel(id: "6",value: "${filePath}giphy.gif"),
+      TipsModel(id: "7",value: "${filePath}giphy.gif"),
+      TipsModel(id: "8",value: "${filePath}giphy.gif"),
+      TipsModel(id: "9",value: "${filePath}giphy.gif"),
+      TipsModel(id: "10",value: "${filePath}giphy.gif"),
     ];
   }
 

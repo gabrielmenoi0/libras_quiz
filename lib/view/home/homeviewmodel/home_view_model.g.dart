@@ -59,35 +59,67 @@ mixin _$HomeViewModel on _HomeViewModelBase, Store {
     });
   }
 
-  late final _$itemsAtom =
-      Atom(name: '_HomeViewModelBase.items', context: context);
+  late final _$itemsTipsAtom =
+      Atom(name: '_HomeViewModelBase.itemsTips', context: context);
 
   @override
-  List<String> get items {
-    _$itemsAtom.reportRead();
-    return super.items;
+  List<String> get itemsTips {
+    _$itemsTipsAtom.reportRead();
+    return super.itemsTips;
   }
 
   @override
-  set items(List<String> value) {
-    _$itemsAtom.reportWrite(value, super.items, () {
-      super.items = value;
+  set itemsTips(List<String> value) {
+    _$itemsTipsAtom.reportWrite(value, super.itemsTips, () {
+      super.itemsTips = value;
     });
   }
 
-  late final _$items2Atom =
-      Atom(name: '_HomeViewModelBase.items2', context: context);
+  late final _$itemsLevelAtom =
+      Atom(name: '_HomeViewModelBase.itemsLevel', context: context);
 
   @override
-  List<String> get items2 {
-    _$items2Atom.reportRead();
-    return super.items2;
+  List<String> get itemsLevel {
+    _$itemsLevelAtom.reportRead();
+    return super.itemsLevel;
   }
 
   @override
-  set items2(List<String> value) {
-    _$items2Atom.reportWrite(value, super.items2, () {
-      super.items2 = value;
+  set itemsLevel(List<String> value) {
+    _$itemsLevelAtom.reportWrite(value, super.itemsLevel, () {
+      super.itemsLevel = value;
+    });
+  }
+
+  late final _$level2Atom =
+      Atom(name: '_HomeViewModelBase.level2', context: context);
+
+  @override
+  bool get level2 {
+    _$level2Atom.reportRead();
+    return super.level2;
+  }
+
+  @override
+  set level2(bool value) {
+    _$level2Atom.reportWrite(value, super.level2, () {
+      super.level2 = value;
+    });
+  }
+
+  late final _$level3Atom =
+      Atom(name: '_HomeViewModelBase.level3', context: context);
+
+  @override
+  bool get level3 {
+    _$level3Atom.reportRead();
+    return super.level3;
+  }
+
+  @override
+  set level3(bool value) {
+    _$level3Atom.reportWrite(value, super.level3, () {
+      super.level3 = value;
     });
   }
 
@@ -147,6 +179,14 @@ mixin _$HomeViewModel on _HomeViewModelBase, Store {
     return _$getUserAsyncAction.run(() => super.getUser());
   }
 
+  late final _$getLevelsAsyncAction =
+      AsyncAction('_HomeViewModelBase.getLevels', context: context);
+
+  @override
+  Future getLevels() {
+    return _$getLevelsAsyncAction.run(() => super.getLevels());
+  }
+
   late final _$setValueAsyncAction =
       AsyncAction('_HomeViewModelBase.setValue', context: context);
 
@@ -155,12 +195,12 @@ mixin _$HomeViewModel on _HomeViewModelBase, Store {
     return _$setValueAsyncAction.run(() => super.setValue(value));
   }
 
-  late final _$setValueNivelAsyncAction =
-      AsyncAction('_HomeViewModelBase.setValueNivel', context: context);
+  late final _$setValueLevelAsyncAction =
+      AsyncAction('_HomeViewModelBase.setValueLevel', context: context);
 
   @override
-  Future<void> setValueNivel(String value) {
-    return _$setValueNivelAsyncAction.run(() => super.setValueNivel(value));
+  Future<void> setValueLevel(String value) {
+    return _$setValueLevelAsyncAction.run(() => super.setValueLevel(value));
   }
 
   @override
@@ -169,8 +209,10 @@ mixin _$HomeViewModel on _HomeViewModelBase, Store {
 user: ${user},
 expandedInstallmentDicas: ${expandedInstallmentDicas},
 expandedInstallmentNiveis: ${expandedInstallmentNiveis},
-items: ${items},
-items2: ${items2},
+itemsTips: ${itemsTips},
+itemsLevel: ${itemsLevel},
+level2: ${level2},
+level3: ${level3},
 selectedTips: ${selectedTips},
 selectedNivels: ${selectedNivels}
     ''';

@@ -20,25 +20,21 @@ abstract class _LoginViewModelBase extends BaseViewModel with Store {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {});
   }
 
+  @observable
+  TextEditingController nameController = TextEditingController();
+
+  @observable
+  GlobalKey<FormState> loginKey = GlobalKey<FormState>();
+
+
   @action
   Future<void> login() async {
-    final GoogleSignIn _googleSignIn = GoogleSignIn(
-      clientId:
-          "204170968821-hlg85rgortdnbqn8pisqtrak72gttcqv.apps.googleusercontent.com",
-      forceCodeForRefreshToken: true,
-      hostedDomain: "",
-      serverClientId:
-          "com.googleusercontent.apps.204170968821-hlg85rgortdnbqn8pisqtrak72gttcqv",
-      signInOption: SignInOption.standard,
-      scopes: <String>[
-        'email',
-        'profile',
-      ],
-    );
     try {
-      final GoogleSignInAccount? googleSignInAccount =
-          await _googleSignIn.signIn();
-    } catch (e, s) {
+      if (!loginKey.currentState!.validate()) return;
+      loginKey.currentState!.save();
+      await localeManager.setStringValue(PreferencesKeys.TOKEN,nameController.text);
+      Navigator.push(viewModelContext, MaterialPageRoute(builder: (context) => HomeView()));
+      } catch (e, s) {
       print(e);
       print(s); 
     }

@@ -31,7 +31,7 @@ class _QuizViewState extends State<QuizView> with TickerProviderStateMixin {
       onModelReady: (model) {
         model.setContext(context);
         model.init();
-        model.setPageView(_controller);
+        model.setList(type: widget.type);
       },
       onPageBuilder: buildScaffoldBody,
     );
@@ -40,56 +40,81 @@ class _QuizViewState extends State<QuizView> with TickerProviderStateMixin {
   Widget buildScaffoldBody(BuildContext context, QuizViewModel viewModel) {
     return Scaffold(
         backgroundColor: AppColors.primaryColor,
-        appBar: AppBar(title: Text(widget.type,style: TextStyle(color: Colors.white),),),
-        body: Column(children: [
-          showLevel(level: widget.type),
-          Observer(
-            builder: (context) {
-              return PageView(
-                scrollDirection: Axis.horizontal,
-                physics: const NeverScrollableScrollPhysics(),
-                onPageChanged: (v) => viewModel.pageController.jumpToPage(v),
-                controller: viewModel.pageController,
-                children: viewModel.listItens
+        appBar: AppBar(
+          centerTitle: true,
+        ),
+        body: SingleChildScrollView(
+          padding: EdgeInsets.all(10),
+          child: Column(children: [
+            showLevel(level: widget.type),
+            const SizedBox(
+              height: 80,
+            ),
+            Observer(builder: (context) {
+              return Gif(
+                image: AssetImage(viewModel.quizModel.giphy ??""),
+                controller: _controller,
+                duration: const Duration(seconds: 2),
+                autostart: Autostart.loop,
+                placeholder: (context) => const Text('Loading...'),
+                onFetchCompleted: () {
+                  _controller.reset();
+                  _controller.forward();
+                },
               );
-            }
-          ),
-        ])
-    );
+            }),
+            const SizedBox(
+              height: 30,
+            ),
+            Observer(builder: (context) {
+              return Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  _button(label: viewModel.quizModel.option1 ??"",viewModel: viewModel),
+                  _button(label: viewModel.quizModel.option2 ??"",viewModel: viewModel),
+                  _button(label: viewModel.quizModel.option3 ??"",viewModel: viewModel),
+                  _button(label: viewModel.quizModel.option4 ??"",viewModel: viewModel),
+                ],
+              );
+            })
+          ]),
+        ));
   }
 
-
-  // Widget itemGiphy(QuizViewModel viewModel) {
-  //   return InkWell(
-  //     onTap: ()=> viewModel.viewGiphy(),
-  //     child: GifImage(
-  //       controller: controller,
-  //       image: AssetImage("assets/images/giphy.gif"),
-  //     ),
-  //   );
-  // }
+  Widget _button({required String label, required QuizViewModel viewModel}) {
+    return ElevatedButton(onPressed: () => viewModel.checkQuestion(selected: label), child: Text(label));
+  }
 
   Widget showLevel({required String level}) {
-    return Observer(builder: (context) {
-      return Container(
-          height: 50,
-          decoration: BoxDecoration(
-                color: Colors.white,
-              borderRadius: BorderRadius.circular(10.00)),
-          child: Row(children: [
-            SizedBox(width: 30,),
-            Container(
-              decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(10.00)),
-              child: Image.asset(ImageConstants.instance.logo),),
-            SizedBox(width: 15,),
-            Text(level, style: TextStyle(
-              fontSize: 22,
-              fontWeight: FontWeight.bold,
-              color: AppColors.primaryColor,
-            ),)
-          ],));
-    });
+    return Container(
+        height: 50,
+        decoration: BoxDecoration(
+            color: Colors.white, borderRadius: BorderRadius.circular(10.00)),
+        child: Center(
+          child: Row(
+            children: [
+              SizedBox(
+                width: 30,
+              ),
+              Container(
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10.00)),
+                child: Image.asset(ImageConstants.instance.logo),
+              ),
+              SizedBox(
+                width: 15,
+              ),
+              Text(
+                level,
+                style: TextStyle(
+                  fontSize: 22,
+                  fontWeight: FontWeight.bold,
+                  color: AppColors.primaryColor,
+                ),
+              )
+            ],
+          ),
+        ));
   }
 }
