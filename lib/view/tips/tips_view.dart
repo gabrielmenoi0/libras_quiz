@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:gif/gif.dart';
+import 'package:libras_quiz/utils/app_colors.dart';
+import 'package:libras_quiz/utils/app_text_style.dart';
+import 'package:libras_quiz/utils/loading_widget.dart';
 import 'package:libras_quiz/view/base_view/base_view.dart';
 import 'package:libras_quiz/view/tips/model/tips_model.dart';
 import 'package:libras_quiz/view/tips/viewmodel/tips_view_model.dart';
@@ -38,7 +41,8 @@ class _TipsViewState extends State<TipsView> with TickerProviderStateMixin {
 
   Widget buildScaffoldBody(BuildContext context, TipsViewModel viewModel) {
     return Scaffold(
-        appBar: AppBar(title: Text(widget.type,style: TextStyle(color: Colors.white),),centerTitle: true),
+        appBar: AppBar(title: Text(widget.type, style: AppTextStyle.textStyle(fontWeight: FontWeight.w600,size: 24),
+        ),centerTitle: true),
         body: Observer(builder: (context) => GridView.builder(
           shrinkWrap: true,
           itemCount: viewModel.listTipsView.length,
@@ -55,20 +59,25 @@ class _TipsViewState extends State<TipsView> with TickerProviderStateMixin {
       onTap: ()=> viewModel.viewGiphy(title: item.id ??"" ,giphy: item.value ??""),
       child: Column(
         children: [
-          Gif(
-            image: AssetImage("assets/images/giphy.gif"),
-            controller: _controller, // if duration and fps is null, original gif fps will be used.
-            //fps: 30,
-            duration: const Duration(seconds: 2),
-            autostart: Autostart.loop,
-            placeholder: (context) => const Text('Loading...'),
-            onFetchCompleted: () {
-              _controller.reset();
-              // _controller.repeat(max: 10000);
-              _controller.forward();
-            },
+          Container(
+            height: 180,
+            // width: 200,
+            child: Gif(
+              image: AssetImage(item.value ?? ""),
+              controller: _controller, // if duration and fps is null, original gif fps will be used.
+              //fps: 30,
+              // height: 700,
+              duration: const Duration(seconds: 2),
+              autostart: Autostart.loop,
+              placeholder: (context) => LoadingWidget.loading(AppColors.primaryColor, 25),
+              onFetchCompleted: () {
+                _controller.reset();
+                // _controller.repeat(max: 10000);
+                _controller.forward();
+              },
+            ),
           ),
-          Text(item.id ??"")
+          Text(item.id ??"", style: AppTextStyle.textStyle(fontWeight: FontWeight.w600,size: 18,color: AppColors.primaryColor),)
       ],)
     );
   }

@@ -2,11 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:libras_quiz/utils/app_colors.dart';
+import 'package:libras_quiz/utils/app_text_style.dart';
 import 'package:libras_quiz/utils/image_constants.dart';
 import 'package:libras_quiz/utils/validator.dart';
 import 'package:libras_quiz/view/base_view/base_view.dart';
 import 'package:libras_quiz/view/login/viewmodel/login_view_model.dart';
-import 'package:libras_quiz/view/splash/viewmodel/splash_view_model.dart';
 
 class LoginView extends StatelessWidget {
   const LoginView({super.key});
@@ -46,7 +46,7 @@ class LoginView extends StatelessWidget {
                   ),
                   Text(
                     "Olá, insira seu nome para jogar!",
-                    style: TextStyle(color: Colors.white,fontSize: 25,fontWeight: FontWeight.w600),
+                    style: AppTextStyle.textStyle(fontWeight: FontWeight.w600,size: 28),
                   ),
                   SizedBox(
                     height: 50,
@@ -63,6 +63,7 @@ class LoginView extends StatelessWidget {
                       controller: viewModel.nameController,
                       textCapitalization: TextCapitalization.words,
                       onFieldSubmitted: (v) => viewModel.login(),
+                      // style: AppTextStyle.textStyle(fontWeight: FontWeight.w600,size: 28),
                       decoration: InputDecoration(
                           hoverColor: Colors.white,
                           fillColor: Colors.white,

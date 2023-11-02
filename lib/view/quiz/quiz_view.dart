@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:gif/gif.dart';
 import 'package:libras_quiz/utils/app_colors.dart';
+import 'package:libras_quiz/utils/app_text_style.dart';
 import 'package:libras_quiz/utils/image_constants.dart';
+import 'package:libras_quiz/utils/loading_widget.dart';
 import 'package:libras_quiz/view/base_view/base_view.dart';
 import 'package:libras_quiz/view/quiz/viewmodel/quiz_view_model.dart';
 
@@ -31,6 +33,7 @@ class _QuizViewState extends State<QuizView> with TickerProviderStateMixin {
       onModelReady: (model) {
         model.setContext(context);
         model.init();
+        model.setListQuiz();
         model.setList(type: widget.type);
       },
       onPageBuilder: buildScaffoldBody,
@@ -42,6 +45,17 @@ class _QuizViewState extends State<QuizView> with TickerProviderStateMixin {
         backgroundColor: AppColors.primaryColor,
         appBar: AppBar(
           centerTitle: true,
+          actions: [
+            Observer(
+              builder: (context) {
+                return Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 20),
+                  child: Text("${viewModel.count}/5",style: AppTextStyle.textStyle(fontWeight: FontWeight.w600,size: 24,color: Colors.white)
+                  ),
+                );
+              }
+            )
+          ],
         ),
         body: SingleChildScrollView(
           padding: EdgeInsets.all(10),
@@ -52,11 +66,12 @@ class _QuizViewState extends State<QuizView> with TickerProviderStateMixin {
             ),
             Observer(builder: (context) {
               return Gif(
-                image: AssetImage(viewModel.quizModel.giphy ??""),
+                height: 350,
+                image: AssetImage("assets/images/gifs/numeros/0.gif"),
                 controller: _controller,
                 duration: const Duration(seconds: 2),
                 autostart: Autostart.loop,
-                placeholder: (context) => const Text('Loading...'),
+                placeholder: (context) => LoadingWidget.loading(AppColors.primaryColor, 25),
                 onFetchCompleted: () {
                   _controller.reset();
                   _controller.forward();
@@ -107,11 +122,7 @@ class _QuizViewState extends State<QuizView> with TickerProviderStateMixin {
               ),
               Text(
                 level,
-                style: TextStyle(
-                  fontSize: 22,
-                  fontWeight: FontWeight.bold,
-                  color: AppColors.primaryColor,
-                ),
+                style: AppTextStyle.textStyle(fontWeight: FontWeight.w600,size: 24,color: AppColors.primaryColor)
               )
             ],
           ),

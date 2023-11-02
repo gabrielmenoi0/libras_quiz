@@ -25,37 +25,37 @@ mixin _$HomeViewModel on _HomeViewModelBase, Store {
     });
   }
 
-  late final _$expandedInstallmentDicasAtom = Atom(
-      name: '_HomeViewModelBase.expandedInstallmentDicas', context: context);
+  late final _$expandedInstallmentTipsAtom = Atom(
+      name: '_HomeViewModelBase.expandedInstallmentTips', context: context);
 
   @override
-  bool get expandedInstallmentDicas {
-    _$expandedInstallmentDicasAtom.reportRead();
-    return super.expandedInstallmentDicas;
+  bool get expandedInstallmentTips {
+    _$expandedInstallmentTipsAtom.reportRead();
+    return super.expandedInstallmentTips;
   }
 
   @override
-  set expandedInstallmentDicas(bool value) {
-    _$expandedInstallmentDicasAtom
-        .reportWrite(value, super.expandedInstallmentDicas, () {
-      super.expandedInstallmentDicas = value;
+  set expandedInstallmentTips(bool value) {
+    _$expandedInstallmentTipsAtom
+        .reportWrite(value, super.expandedInstallmentTips, () {
+      super.expandedInstallmentTips = value;
     });
   }
 
-  late final _$expandedInstallmentNiveisAtom = Atom(
-      name: '_HomeViewModelBase.expandedInstallmentNiveis', context: context);
+  late final _$expandedInstallmentLevelAtom = Atom(
+      name: '_HomeViewModelBase.expandedInstallmentLevel', context: context);
 
   @override
-  bool get expandedInstallmentNiveis {
-    _$expandedInstallmentNiveisAtom.reportRead();
-    return super.expandedInstallmentNiveis;
+  bool get expandedInstallmentLevel {
+    _$expandedInstallmentLevelAtom.reportRead();
+    return super.expandedInstallmentLevel;
   }
 
   @override
-  set expandedInstallmentNiveis(bool value) {
-    _$expandedInstallmentNiveisAtom
-        .reportWrite(value, super.expandedInstallmentNiveis, () {
-      super.expandedInstallmentNiveis = value;
+  set expandedInstallmentLevel(bool value) {
+    _$expandedInstallmentLevelAtom
+        .reportWrite(value, super.expandedInstallmentLevel, () {
+      super.expandedInstallmentLevel = value;
     });
   }
 
@@ -207,8 +207,8 @@ mixin _$HomeViewModel on _HomeViewModelBase, Store {
   String toString() {
     return '''
 user: ${user},
-expandedInstallmentDicas: ${expandedInstallmentDicas},
-expandedInstallmentNiveis: ${expandedInstallmentNiveis},
+expandedInstallmentTips: ${expandedInstallmentTips},
+expandedInstallmentLevel: ${expandedInstallmentLevel},
 itemsTips: ${itemsTips},
 itemsLevel: ${itemsLevel},
 level2: ${level2},

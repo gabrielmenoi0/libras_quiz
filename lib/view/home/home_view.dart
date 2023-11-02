@@ -2,6 +2,7 @@ import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:libras_quiz/utils/app_colors.dart';
+import 'package:libras_quiz/utils/app_text_style.dart';
 import 'package:libras_quiz/utils/image_constants.dart';
 import 'package:libras_quiz/view/base_view/base_view.dart';
 import 'package:libras_quiz/view/home/homeviewmodel/home_view_model.dart';
@@ -41,7 +42,7 @@ class HomeView extends StatelessWidget {
               return DropdownButtonHideUnderline(
                 child: DropdownButton2<String>(
                   isExpanded: true,
-                  hint: const Row(
+                  hint: Row(
                     children: [
                       Icon(
                         Icons.list,
@@ -54,11 +55,7 @@ class HomeView extends StatelessWidget {
                       Expanded(
                         child: Text(
                           'Dicas',
-                          style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.bold,
-                            color: AppColors.primaryColor,
-                          ),
+                          style: AppTextStyle.textStyle(fontWeight: FontWeight.w600,size: 14,color: AppColors.primaryColor),
                           overflow: TextOverflow.ellipsis,
                         ),
                       ),
@@ -69,11 +66,7 @@ class HomeView extends StatelessWidget {
                     value: item,
                     child: Text(
                       item,
-                      style: const TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.bold,
-                        color: AppColors.primaryColor,
-                      ),
+                      style: AppTextStyle.textStyle(fontWeight: FontWeight.w600,size: 14,color: AppColors.primaryColor),
                       overflow: TextOverflow.ellipsis,
                     ),
                   )).toList(),
@@ -131,7 +124,7 @@ class HomeView extends StatelessWidget {
               return DropdownButtonHideUnderline(
                 child: DropdownButton2<String>(
                   isExpanded: true,
-                  hint: const Row(
+                  hint: Row(
                     children: [
                       Icon(
                         Icons.lock_open_outlined,
@@ -144,11 +137,7 @@ class HomeView extends StatelessWidget {
                       Expanded(
                         child: Text(
                           'Níveis',
-                          style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.bold,
-                            color: AppColors.primaryColor,
-                          ),
+                          style: AppTextStyle.textStyle(fontWeight: FontWeight.w600,size: 14,color: AppColors.primaryColor),
                           overflow: TextOverflow.ellipsis,
                         ),
                       ),
@@ -162,11 +151,7 @@ class HomeView extends StatelessWidget {
                       children: [
                         Text(
                           item,
-                          style: const TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.bold,
-                            color: AppColors.primaryColor,
-                          ),
+                          style: AppTextStyle.textStyle(fontWeight: FontWeight.w600,size: 14,color: AppColors.primaryColor),
                           overflow: TextOverflow.ellipsis,
                         ),
                         Icon(item =="Iniciante"  || item =="Intermediário" && viewModel.level2 || item=="Avançado" && viewModel.level3 ? Icons.lock_open_rounded: Icons.lock,color: AppColors.primaryColor,)
@@ -242,11 +227,9 @@ class HomeView extends StatelessWidget {
                 borderRadius: BorderRadius.circular(50.00)),
               child: Image.asset(ImageConstants.instance.logo),),
             SizedBox(width: 15,),
-            Text("Seja bem vindo, ${viewModel.user}", style: TextStyle(
-              fontSize: 22,
-              fontWeight: FontWeight.bold,
-              color: AppColors.primaryColor,
-            ),)
+            Text("Seja bem vindo, ${viewModel.user}",
+              style: AppTextStyle.textStyle(fontWeight: FontWeight.w600,size: 28,color: AppColors.primaryColor),
+            )
           ],));
     });
   }

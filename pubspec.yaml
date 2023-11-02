@@ -28,10 +28,12 @@ dependencies:
   firebase_crashlytics: ^3.3.4
   firebase_performance: ^0.9.2+4
 
-
+  #UI
   flutter_launcher_icons: ^0.11.0
   gif: ^2.2.0
   fluttertoast: ^8.2.2
+  google_fonts:
+  flutter_spinkit: ^5.2.0
 
   # ux
 
@@ -65,6 +67,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/images/
+    - assets/images/gifs/numeros/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

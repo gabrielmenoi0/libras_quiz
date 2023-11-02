@@ -15,7 +15,7 @@ class ToastHelper{
         toastLength: Toast.LENGTH_SHORT,
         gravity: ToastGravity.TOP,
         timeInSecForIosWeb: timer ?? 3,
-        backgroundColor: isError ? Colors.red : AppColors.primaryColor,
+        backgroundColor: isError ? Colors.red : Colors.green,
         textColor: Colors.white,
         fontSize: 16.0
     );

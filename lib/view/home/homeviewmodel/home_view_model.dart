@@ -17,10 +17,10 @@ abstract class _HomeViewModelBase extends BaseViewModel with Store {
   String user = "";
 
   @observable
-  bool expandedInstallmentDicas = false;
+  bool expandedInstallmentTips = false;
 
   @observable
-  bool expandedInstallmentNiveis = false;
+  bool expandedInstallmentLevel = false;
 
   @observable
   List<String> itemsTips = [
@@ -49,12 +49,12 @@ abstract class _HomeViewModelBase extends BaseViewModel with Store {
 
   @action
   expandedTips() async {
-    expandedInstallmentDicas = !expandedInstallmentDicas;
+    expandedInstallmentTips = !expandedInstallmentTips;
   }
 
   @action
   expandedLevels() async {
-    expandedInstallmentNiveis = !expandedInstallmentNiveis;
+    expandedInstallmentLevel = !expandedInstallmentLevel;
   }
 
   @action
